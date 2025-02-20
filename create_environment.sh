@@ -6,22 +6,22 @@ read yourName
 
 # Create the main directory
 main_dir="submission_reminder_${yourName}"
-mkdir -p "$master_dir"
+mkdir -p "$plan_dir"
 
 # Create subdirectories
-mkdir -p "$master_dir/config"
-mkdir -p "$master_dir/modules"
-mkdir -p "$master_dir/assets"
+mkdir -p "$plan_dir/config"
+mkdir -p "$plan_dir/modules"
+mkdir -p "$plan_dir/assets"
 
 # Create and populate the config.env file
-cat <<EOL > "$master_dir/config/config.env"
+cat <<EOL > "$plan_dir/config/config.env"
 # This is the config file
 ASSIGNMENT="Shell Navigation"
 DAYS_REMAINING=2
 EOL
 
 # Create and populate the reminder.sh file
-cat <<EOL > "$master_dir/reminder.sh"
+cat <<EOL > "$plan_dir/reminder.sh"
 #!/bin/bash
 
 # Source environment variables and helper functions
@@ -40,10 +40,10 @@ check_submissions \$submissions_file
 EOL
 
 # Make reminder.sh executable
-chmod +x "$master_dir/reminder.sh"
+chmod +x "$plan_dir/reminder.sh"
 
 # Create and populate the functions.sh file
-cat <<EOL > "$master_dir/modules/functions.sh"
+cat <<EOL > "$plan_dir/modules/functions.sh"
 #!/bin/bash
 
 # Function to read submissions file and output students who have not submitted
@@ -67,10 +67,10 @@ function check_submissions {
 EOL
 
 # Make functions.sh executable
-chmod +x "$master_dir/modules/functions.sh"
+chmod +x "$plan_dir/modules/functions.sh"
 
 # Create and populate the submissions.txt file with 10 additional students
-cat <<EOL > "$master_dir/assets/submissions.txt"
+cat <<EOL > "$plan_dir/assets/submissions.txt"
 student, assignment, submission status
 Chinemerem, Shell Navigation, not submitted
 Chiagoziem, Git, submitted
@@ -91,7 +91,7 @@ Mason, Shell Navigation, not submitted
 EOL
 
 # Create the startup.sh script
-cat <<EOL > "$master_dir/startup.sh"
+cat <<EOL > "$plan_dir/startup.sh"
 #!/bin/bash
 
 # Start the reminder application
@@ -99,6 +99,6 @@ cat <<EOL > "$master_dir/startup.sh"
 EOL
 
 # Make the startup.sh script executable
-chmod +x "$master_dir/startup.sh"
+chmod +x "$plan_dir/startup.sh"
 
-echo "Environment setup complete. You can now run the application by executing the startup.sh script in the $main_dir directory."
+echo "Environment setup complete. You can now run the application by executing the startup.sh script in the $plan_dir directory."
